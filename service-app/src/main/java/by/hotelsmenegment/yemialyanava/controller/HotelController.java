@@ -17,24 +17,24 @@ public class HotelController {
     private final HotelService hotelService;
     private final HotelMapper hotelMapper;
 
-    @GetMapping ("/hotels")
+    @GetMapping("/hotels")
     public List<HotelDto> readAll() {
         return hotelService.findAll().stream().map(hotelMapper::toDto).toList();
     }
 
-    @GetMapping ("/hotels/{id}")
+    @GetMapping("/hotels/{id}")
     public HotelDtoBig read(@PathVariable(name = "id") Integer id) {
         return hotelMapper.toDtoBig(hotelService.findById(id));
     }
 
-    @GetMapping ("/search")
+    @GetMapping("/search")
     public List<HotelDto> search(@RequestParam(required = false) String name,
                                  @RequestParam(required = false) String brand) {
         return hotelService.findAllByKeywordIgnoreCase(name, brand).stream().map(hotelMapper::toDto).toList();
     }
 
     @PostMapping("/hotels")
-    public HotelDto create(@RequestBody Hotel hotel){
+    public HotelDto create(@RequestBody Hotel hotel) {
         return hotelMapper.toDto(hotelService.create(hotel));
     }
 }

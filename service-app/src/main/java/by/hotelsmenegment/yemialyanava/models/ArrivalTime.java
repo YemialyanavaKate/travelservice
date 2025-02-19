@@ -1,12 +1,8 @@
 package by.hotelsmenegment.yemialyanava.models;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Data
@@ -15,7 +11,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ArrivalTime {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String checkIn;
     private String checkOut;
+    @JsonIgnore
+    @OneToOne(mappedBy = "arrivalTime")
+    private Hotel hotel;
 }
