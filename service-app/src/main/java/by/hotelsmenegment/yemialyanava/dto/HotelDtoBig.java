@@ -13,4 +13,7 @@ public class HotelDtoBig {
     private Integer id;
     private String name;
     private String brand;
+    private AddressDtoBig address;
+    private ContactsDtoBig contacts;
+    private ArrivalTimeDtoBig arrivalTime;
 }

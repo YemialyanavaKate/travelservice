@@ -1,11 +1,8 @@
 package by.hotelsmenegment.yemialyanava.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Data
@@ -14,10 +11,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Address {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer houseNumber;
     private String street;
     private String city;
     private String country;
     private String postCode;
+    @JsonIgnore
+    @OneToOne(mappedBy = "address")
+    private Hotel hotel;
 }

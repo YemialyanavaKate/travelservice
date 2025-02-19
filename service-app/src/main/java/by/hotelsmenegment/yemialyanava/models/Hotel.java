@@ -1,11 +1,7 @@
 package by.hotelsmenegment.yemialyanava.models;
 
-
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
@@ -19,9 +15,15 @@ public class Hotel {
     private String name;
     private String description;
     private String brand;
-    /*private Address address;
-    private Contacts contacts;
-    private ArrivalTime arrivalTime;
-    private Amenities amenities;*/
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contacts_id", referencedColumnName = "id")
+    private Contacts contacts;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "arrivalTime_id", referencedColumnName = "id")
+    private ArrivalTime arrivalTime;
+    //private Amenities amenities;
 }

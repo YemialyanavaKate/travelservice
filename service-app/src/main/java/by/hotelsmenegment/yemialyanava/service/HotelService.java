@@ -15,12 +15,12 @@ public class HotelService {
 
     private final HotelRepository hotelRepository;
 
-    public List<Hotel> findAll(){
+    public List<Hotel> findAll() {
         return hotelRepository.findAll();
     }
 
-    public Hotel findById(Integer id){
-        return hotelRepository.findById(id).orElseThrow(()-> new NoSuchElementException(String.format("Hotel with number: %s not found", id)));
+    public Hotel findById(Integer id) {
+        return hotelRepository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("Hotel with number: %s not found", id)));
     }
 
     public List<Hotel> findAllByKeywordIgnoreCase(String name, String brand) {
@@ -29,7 +29,7 @@ public class HotelService {
 
 
     @Transactional
-    public Hotel create(Hotel hotel){
+    public Hotel create(Hotel hotel) {
         return hotelRepository.save(hotel);
     }
 
