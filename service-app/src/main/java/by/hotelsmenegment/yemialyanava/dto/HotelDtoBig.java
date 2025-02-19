@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HotelDto {
+public class HotelDtoBig {
     private Integer id;
     private String name;
-    private String description;
-
+    private String brand;
 }
