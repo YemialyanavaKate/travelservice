@@ -1,8 +1,7 @@
 package by.hotelsmenegment.yemialyanava.models;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Hotel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String description;
@@ -23,4 +23,5 @@ public class Hotel {
     private Contacts contacts;
     private ArrivalTime arrivalTime;
     private Amenities amenities;*/
+
 }
