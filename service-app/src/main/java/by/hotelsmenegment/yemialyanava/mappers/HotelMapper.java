@@ -26,23 +26,13 @@ public class HotelMapper {
                 .build();
     }
 
-    public Hotel toEntity(HotelDto hotelDto) {
-
-        return Hotel.builder()
-                .id(hotelDto.getId())
-                .name(hotelDto.getName())
-                .description(hotelDto.getDescription())
-                .brand(null)
-                .build();
-    }
-
     public HotelDtoBig toDtoBig(Hotel hotel) {
 
         AddressDtoBig addressDtoBig = addressMapper.toDtoBig(hotel.getAddress());
         ContactsDtoBig contactsDtoBig = contactsMapper.toDtoBig(hotel.getContacts());
         ArrivalTimeDtoBig arrivalTimeDtoBig = arrivalTimeMapper.toDtoBig(hotel.getArrivalTime());
 
-        return HotelDtoBig.builder()
+        HotelDtoBig hotelDtoBig = HotelDtoBig.builder()
                 .id(hotel.getId())
                 .name(hotel.getName())
                 .brand(hotel.getBrand())
@@ -50,5 +40,10 @@ public class HotelMapper {
                 .contacts(contactsDtoBig)
                 .arrivalTime(arrivalTimeDtoBig)
                 .build();
+        if (hotel.getAmenities() != null){
+            hotelDtoBig.setAmenities(hotel.getAmenities());
+        }
+
+        return hotelDtoBig;
     }
 }

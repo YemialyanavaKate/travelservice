@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,12 +30,25 @@ public class HotelController {
 
     @GetMapping("/search")
     public List<HotelDto> search(@RequestParam(required = false) String name,
-                                 @RequestParam(required = false) String brand) {
-        return hotelService.findAllByKeywordIgnoreCase(name, brand).stream().map(hotelMapper::toDto).toList();
+                                 @RequestParam(required = false) String brand,
+                                 @RequestParam(required = false) String city,
+                                 @RequestParam(required = false) String country,
+                                 @RequestParam(required = false) String amenities) {
+        return hotelService.findAllByKeywordIgnoreCase(name, brand, city, country, amenities).stream().map(hotelMapper::toDto).toList();
     }
 
     @PostMapping("/hotels")
     public HotelDto create(@RequestBody Hotel hotel) {
         return hotelMapper.toDto(hotelService.create(hotel));
+    }
+
+    @PostMapping("/hotels/{id}/amenities")
+    public void addAmenities(@PathVariable(name = "id") Integer id, @RequestBody List<String> amenities) {
+        hotelService.addAmenities(id, amenities);
+    }
+
+    @GetMapping("/histogram/{param}")
+    public Map<String, Integer> histogram(@PathVariable String param) {
+        return hotelService.findHistogram(param);
     }
 }
