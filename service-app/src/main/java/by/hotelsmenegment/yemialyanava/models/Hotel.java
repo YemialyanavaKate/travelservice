@@ -3,6 +3,8 @@ package by.hotelsmenegment.yemialyanava.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @Builder
@@ -25,5 +27,6 @@ public class Hotel {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "arrivalTime_id", referencedColumnName = "id")
     private ArrivalTime arrivalTime;
-    //private Amenities amenities;
+    @ElementCollection
+    private List<String> amenities;
 }
