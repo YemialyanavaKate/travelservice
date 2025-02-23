@@ -32,6 +32,6 @@ public interface HotelRepository extends JpaRepository<Hotel, Integer> {
     @Query("SELECT a.country FROM Hotel h JOIN h.address a")
     List<String> countByCountry();
 
-    @Query("SELECT am FROM Hotel h JOIN h.amenities am")
+    @Query("SELECT amenities FROM Hotel")
     List<String> countByAmenities();
 }

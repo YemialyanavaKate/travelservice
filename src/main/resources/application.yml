@@ -21,3 +21,5 @@ spring:
       enabled: true
       path: /h2-console
       settings.web-allow-others: true
+  liquibase:
+    change-log: classpath:/db.changelog.xml
