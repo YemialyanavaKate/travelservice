@@ -5,14 +5,18 @@ import by.hotelsmenegment.yemialyanava.models.ArrivalTime;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 @Component
 @AllArgsConstructor
 public class ArrivalTimeMapper {
     public ArrivalTimeDtoBig toDtoBig(ArrivalTime arrivalTime) {
-        return ArrivalTimeDtoBig.builder()
+        ArrivalTimeDtoBig build = ArrivalTimeDtoBig.builder()
                 .checkIn(arrivalTime.getCheckIn())
-                .checkOut(arrivalTime.getCheckOut())
                 .build();
+        if (Objects.nonNull(arrivalTime.getCheckOut())) {
+            build.setCheckOut(arrivalTime.getCheckOut());
+        }
+        return build;
     }
-
 }
