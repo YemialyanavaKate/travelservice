@@ -40,10 +40,9 @@ public class HotelMapper {
                 .contacts(contactsDtoBig)
                 .arrivalTime(arrivalTimeDtoBig)
                 .build();
-        if (hotel.getAmenities() != null){
+        if (hotel.getAmenities() != null && !hotel.getAmenities().isEmpty()){
             hotelDtoBig.setAmenities(hotel.getAmenities());
         }
-
         return hotelDtoBig;
     }
 }
