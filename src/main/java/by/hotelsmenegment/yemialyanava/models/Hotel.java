@@ -6,10 +6,12 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
