@@ -5,10 +5,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Contacts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
